@@ -20,7 +20,7 @@ public class PizzaController {
     }
 
     @GetMapping
-    public List<Pizza> findAll(@RequestParam String name) {
+    public List<Pizza> findAll(@RequestParam(required = false) String name) {
         if (name != null) {
             return pizzaService.searchByName(name);
         }
