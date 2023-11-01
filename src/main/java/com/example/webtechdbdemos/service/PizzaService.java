@@ -3,8 +3,11 @@ package com.example.webtechdbdemos.service;
 import com.example.webtechdbdemos.model.Pizza;
 import com.example.webtechdbdemos.respository.PizzaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -17,5 +20,14 @@ public class PizzaService {
         pizza.setId(UUID.randomUUID().toString());
         pizzaRepository.save(pizza);
         return pizza;
+    }
+
+    public List<Pizza> getAllPizza() {
+
+        return pizzaRepository.findAll();
+    }
+
+    public List<Pizza> searchByName(String name) {
+        return pizzaRepository.findPizzasByNameContaining(name);
     }
 }
