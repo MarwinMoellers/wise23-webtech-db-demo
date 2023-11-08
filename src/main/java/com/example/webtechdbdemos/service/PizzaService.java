@@ -15,8 +15,8 @@ public class PizzaService {
     private final PizzaRepository pizzaRepository;
 
     public Pizza createPizza(Pizza pizza) {
-        pizzaRepository.save(pizza);
         pizza.setId(UUID.randomUUID().toString());
+        pizzaRepository.save(pizza);
         return pizza;
     }
 
