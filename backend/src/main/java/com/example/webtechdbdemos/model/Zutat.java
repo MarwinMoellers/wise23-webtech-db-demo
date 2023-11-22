@@ -7,14 +7,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Entity
 @Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pizza {
+public class Zutat {
     @Id
     String id;
     String name;
+    Long kalorien;
 
+    String pizzaId;
 }
