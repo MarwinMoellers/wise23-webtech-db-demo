@@ -6,7 +6,7 @@ import router from '@/router';
 
 <template>
   <main>
-    <router-link to="/pizza"> Pizza Übersicht </router-link>
+    <router-link to="/pizza" data-cy="overview-button"> Pizza Übersicht </router-link>
     <AddPizza @pizzaAdded="router.push('/pizza')"></AddPizza>
   </main>
 </template>

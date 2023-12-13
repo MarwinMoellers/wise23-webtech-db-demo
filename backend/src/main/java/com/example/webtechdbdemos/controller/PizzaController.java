@@ -1,6 +1,7 @@
 package com.example.webtechdbdemos.controller;
 
 import com.example.webtechdbdemos.model.Pizza;
+import com.example.webtechdbdemos.respository.PizzaRepository;
 import com.example.webtechdbdemos.service.PizzaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 public class PizzaController {
 
     private final PizzaService pizzaService;
+    private final PizzaRepository pizzaRepository;
 
     @PostMapping
     public Pizza createPizza(@RequestBody Pizza pizza) {
@@ -26,5 +28,10 @@ public class PizzaController {
             return pizzaService.searchByName(name);
         }
         return pizzaService.getAllPizza();
+    }
+
+    @DeleteMapping
+    public void deleteAllPizza() {
+        pizzaRepository.deleteAll();
     }
 }
