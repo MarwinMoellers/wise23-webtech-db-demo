@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/pizza")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class PizzaController {
 
     private final PizzaService pizzaService;

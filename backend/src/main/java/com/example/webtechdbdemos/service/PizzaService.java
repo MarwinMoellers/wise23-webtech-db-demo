@@ -16,7 +16,6 @@ public class PizzaService {
     private final ZutatService zutatService;
 
     public Pizza createPizza(Pizza pizza) {
-        pizza.setZutaten(pizza.getZutaten().stream().map(zutatService::createZutat).toList());
         pizza.setId(UUID.randomUUID().toString());
         pizzaRepository.save(pizza);
         return pizza;
