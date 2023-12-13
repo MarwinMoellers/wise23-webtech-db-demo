@@ -5,7 +5,7 @@ import axios from 'axios';
 function onSubmit() {
   console.log('sumitted: ' + name.value);
   axios
-      .post('http://localhost:8089/api/pizza', {name: name.value})
+      .post('http://localhost:8080/api/pizza', {name: name.value})
       .then((response) => {
         console.log("erstellt: " + response.data.id)
         emit('pizzaAdded', response.data)

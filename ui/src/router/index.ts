@@ -19,11 +19,19 @@ const router = createRouter({
     },
     {
       path: '/pizza',
-      name: 'Pizza',
+      name: 'Pizza Übersicht',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/PizzaOverview.vue')
+    },
+    {
+      path: '/pizza/:pizzaId',
+      name: 'Pizza Detail',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/PizzaDetail.vue')
     }
   ]
 })

@@ -9,7 +9,7 @@ type Pizza = {
 }
 let pizzas: Ref<Pizza[]> = ref([]);
 axios
-    .get('http://localhost:8089/api/pizza')
+    .get('http://localhost:8080/api/pizza')
     .then((response) => {
       pizzas.value = response.data;
     });
