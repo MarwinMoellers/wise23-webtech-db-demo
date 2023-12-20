@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import axios from 'axios';
+import { ref } from 'vue'
+import axios from 'axios'
+import { type Pizza, PizzaControllerApi } from '@/app/api/generated'
 
 function onSubmit() {
-  console.log('sumitted: ' + name.value);
-  axios
-      .post('http://localhost:8080/api/pizza', {name: name.value})
-      .then((response) => {
-        console.log("erstellt: " + response.data.id)
-        emit('pizzaAdded', response.data)
-      });
+  console.log('sumitted: ' + name.value)
+  new PizzaControllerApi().createPizza({ name: name.value } as Pizza)
+    .then(value => emit('pizzaAdded', value.data))
 }
+
 const emit = defineEmits(['pizzaAdded'])
 
 
-const name = ref('');
+const name = ref('')
 </script>
 
 <template>
@@ -23,7 +21,7 @@ const name = ref('');
     <input v-model="name" type="text">
     <button>Hinzufügen</button>
   </form>
-  {{name}}
+  {{ name }}
 </template>
 
 <style scoped>

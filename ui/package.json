@@ -10,7 +10,9 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "eslint  --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cp-opanapi-spec": "curl http://localhost:8080/v3/api-docs > ./openapi/spec.json",
+    "openapi-gen-core": "npx @openapitools/openapi-generator-cli generate -i http://localhost:8080/v3/api-docs -g typescript-axios -o ./src/app/api/generated --skip-validate-spec --type-mappings=DateTime=Date --additional-properties=enumPropertyNaming=original"
   },
   "dependencies": {
     "axios": "^1.6.2",
@@ -18,6 +20,7 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
     "@rushstack/eslint-patch": "^1.3.3",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^18.18.5",

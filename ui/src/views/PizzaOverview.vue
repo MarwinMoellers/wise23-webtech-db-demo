@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import axios from 'axios';
-import { Ref, ref } from 'vue';
-import AddPizza from '@/components/AddPizza.vue';
+import { Ref, ref } from 'vue'
+import AddPizza from '@/components/AddPizza.vue'
+import { Configuration, type Pizza, PizzaControllerApi } from '@/app/api/generated'
 
-type Pizza = {
-  id: string;
-  name: string;
-}
 let pizzas: Ref<Pizza[]> = ref([]);
-axios
-    .get('http://localhost:8080/api/pizza')
-    .then((response) => {
-      pizzas.value = response.data;
-    });
+// axios
+//     .get('http://localhost:8080/api/pizza')
+//     .then((response) => {
+//       pizzas.value = response.data;
+//     });
+let pizzaController = new PizzaControllerApi({basePath: 'http://localhost:8080'} as Configuration)
+pizzaController.findAll()
+  .then(value => {
+    pizzas.value = value.data;
+  });
 
 function pizzaAddedByComp(pizza: Pizza) {
   pizzas.value.push(pizza)
@@ -21,6 +22,10 @@ function pizzaAddedByComp(pizza: Pizza) {
 </script>
 
 <template>
+  <div>
+
+  </div>
+
   <table>
     <tr>
       <th>ID</th>
